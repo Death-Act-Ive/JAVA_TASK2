@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // USES MAPPING
@@ -38,8 +39,15 @@ public class modalDialog <T>  {
     public T openDialog(){
         printQuestion();
         printAnswers();
-        String ans = in.nextLine().toLowerCase();
-        int idx = java.util.Arrays.asList(variants).indexOf(ans);
-        return results[idx];
+        for(;;) {
+            String ans = in.nextLine().toLowerCase();
+            int idx = java.util.Arrays.asList(variants).indexOf(ans);
+            try {
+                return results[idx];
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please, try again");
+            }
+        }
+
     }
 }

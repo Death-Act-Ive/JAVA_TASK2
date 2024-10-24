@@ -20,12 +20,21 @@ public class Main {
         if(modDialog != null && inDialog1 != null && inDialog2 != null && inDialog3 != null){
             Boolean exFlag = false;
             while(!exFlag) {
+                // EX 1
                 int arrSizeX = inDialog1.openIntDialog();
                 int arrSizeY = inDialog2.openIntDialog();
                 int num = inDialog3.openIntDialog();
                 int [][] arr = arrayMap.generate(arrSizeX, arrSizeY, ARR_MIN, ARR_MAX);
+
                 arrayMap.printArray(arr);
                 arrayMap.countOnCondition(arr,num);
+
+                int intervalA = inDialog3.openIntDialog();
+                int intervalB = inDialog3.openIntDialog();
+
+                // EX 2
+                System.out.println("Vector:");
+                int [] vector = arrayMap.countVector(arr, intervalA, intervalB);
                 exFlag = modDialog.openDialog();
             }
         }
